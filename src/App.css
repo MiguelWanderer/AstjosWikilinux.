@@ -228,3 +228,49 @@ body {
     opacity: 0.98;
   }
 }
+
+
+/* Engranajes.css */
+
+.sacred-cogs-container {
+  /* Contenedor que ocupa el espacio del elemento padre */
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 1; /* Mantén el z-index bajo para que quede en el fondo */
+  opacity: 0.15; /* Ajusta la opacidad según la fuerza visual que desees */
+  pointer-events: none; /* Crucial para que no bloquee los clics en los elementos frontales */
+  overflow: hidden; /* Evita que los engranajes rompan el layout si sobresalen */
+}
+
+.cog-svg {
+  position: absolute;
+  fill: none;
+  stroke: #ff8a00; /* Color naranja Mechanicus */
+  stroke-width: 2;
+}
+
+/* Engranaje Principal (Gira en sentido horario) */
+.cog-large {
+  width: 800px;
+  height: 800px;
+  top: -250px;
+  right: -250px;
+  animation: spin-clockwise 60s linear infinite;
+}
+
+/* Engranaje Secundario (Gira en sentido antihorario) */
+.cog-small {
+  width: 400px;
+  height: 400px;
+  bottom: -150px;
+  left: -150px;
+  animation: spin-counter-clockwise 40s linear infinite;
+}
+
+/* Las directivas de movimiento perpetuo */
+@keyframes spin-clockwise { 
+  100% { transform: rotate(360deg); } 
+}
+@keyframes spin-counter-clockwise { 
+  100% { transform: rotate(-360deg); } 
+}

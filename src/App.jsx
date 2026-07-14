@@ -5,6 +5,39 @@ import { mechanicusLore } from './mechanicusLore';
 import softwareLibreMd from './docs/01Software_libre_y_licencias.md?raw';
 import instalacionBasicaMd from './docs/02Instalacion_y-configuracion_basica.md?raw';
 import permisosporlineadecomandos from './docs/03Permisos_por_linea_de_comandos.md?raw';
+// EngranajesBackground.jsx
+import React from 'react';
+import './Engranajes.css';
+
+const EngranajesBackground = () => {
+  return (
+    <div className="sacred-cogs-container">
+      {/* Engranaje Grande */}
+      <svg className="cog-svg cog-large" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        {/* Dientes del engranaje (simulados con stroke-dasharray) */}
+        <circle cx="50" cy="50" r="40" strokeDasharray="10 5" />
+        {/* Anillo exterior */}
+        <circle cx="50" cy="50" r="30" />
+        {/* Eje central */}
+        <circle cx="50" cy="50" r="10" />
+        {/* Rayos/Radios cruzados */}
+        <line x1="50" y1="10" x2="50" y2="90" />
+        <line x1="10" y1="50" x2="90" y2="50" />
+      </svg>
+      
+      {/* Engranaje Pequeño */}
+      <svg className="cog-svg cog-small" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="45" strokeDasharray="8 4" />
+        <circle cx="50" cy="50" r="20" />
+        {/* Forma interior más mecánica */}
+        <path d="M 50 5 L 50 25 M 50 95 L 50 75 M 5 50 L 25 50 M 95 50 L 75 50" />
+      </svg>
+    </div>
+  );
+};
+
+export default EngranajesBackground;
+
 
 const MechanicusConsole = () => {
   // Estado para simular la navegación entre los tomos de conocimiento
