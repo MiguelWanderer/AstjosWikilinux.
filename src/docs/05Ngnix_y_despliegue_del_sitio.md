@@ -1,4 +1,4 @@
-# Bloque E - Criterio 3.1.4: Validación y Despliegue del Sitio
+# Bloque E Validación y Despliegue del Sitio
 
 ## Flujo de trabajo: Pruebas y Puesta en Marcha
 
@@ -39,5 +39,3 @@ Una vez desplegado el sitio web en el puerto 80 (HTTP), se detecta la necesidad 
 **Justificación y Documentación del Intento (Desafío):**
 
 Para un entorno de producción, la **Alternativa 3 (Certbot)** es la única viable. Para lograrlo, el servidor Linux debe estar expuesto a internet y contar con un dominio válido. El comando `sudo certbot --nginx -d midominio.com` se encargaría de leer la receta en `sites-available`, emitir el certificado y modificar el archivo automáticamente para escuchar en el puerto 443. 
-
-*(Opcional: Si lograste hacer este desafío o probarlo en alguna máquina, reemplaza este texto con tu captura de Certbot instalando el certificado).*
