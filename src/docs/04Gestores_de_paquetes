@@ -1,0 +1,15 @@
+# Bloque D - Gestión de Paquetes y Servicios
+
+## Flujo de trabajo: Instalación y Monitoreo de Servicios
+Para la correcta implementación del servidor web, se siguió un flujo de trabajo secuencial estándar en Linux, utilizando el gestor de paquetes APT y el administrador de servicios `systemd`:
+
+1. **Consulta de información:** Primero, se utiliza el comando `apt show` para consultar los repositorios del sistema y revisar los detalles técnicos del paquete (versión, tamaño, dependencias) antes de proceder.
+2. **Instalación del paquete:** Una vez confirmada la información, se procede con la descarga e instalación en el sistema utilizando `sudo apt install`.
+
+A continuación, se presentan las evidencias de este flujo de trabajo:
+
+### 1. Gestión de paquetes (`apt show` / `apt install`)
+La siguiente captura demuestra la fase inicial del flujo, evidenciando el uso del gestor de paquetes para consultar la información de Nginx o ejecutar su instalación en el sistema.
+
+![Evidencia comando apt](..assets/img/ITEM_D/Captura_de_pantalla_2026-07-13_170006.png)
+![Evidencia de comando apt install ](..assets/img/ITEM_D/Captura_de_pantalla_2026-07-13_170253.png)
