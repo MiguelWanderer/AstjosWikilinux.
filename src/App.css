@@ -1,4 +1,4 @@
-/* MechanicusHeavy.css */
+/* MechanicusHeavy.css / App.css */
 
 :root {
   --mech-orange: #ff8a00;
@@ -19,7 +19,7 @@ body {
 /* El contenedor maestro que abarca toda la pantalla */
 .cogitator-container,
 .cogitator-viewport {
-  position: relative;
+  position: relative; /* CRUCIAL para anclar los engranajes */
   background-color: var(--mech-dark);
   color: var(--mech-orange);
   font-family: 'Courier New', Courier, monospace;
@@ -35,6 +35,13 @@ body {
   width: min(85vw, calc(85% - 24px));
   min-height: calc(100vh - 24px);
   margin: 12px auto;
+}
+
+/* Asegurar que la interfaz flote sobre el fondo animado */
+.cogitator-header, 
+.cogitator-body {
+  position: relative;
+  z-index: 10; 
 }
 
 /* La Terminal Central */
@@ -80,7 +87,7 @@ body {
   min-width: 220px;
   border-right: 2px dashed rgba(255, 138, 0, 0.5);
   padding-right: 18px;
-  overflow-y: auto; /* Permite scroll en el índice si hay muchas páginas */
+  overflow-y: auto;
 }
 
 .section-title {
@@ -126,7 +133,7 @@ body {
 .data-vault {
   flex: 1;
   padding: 10px 20px;
-  overflow-y: auto; /* Scroll para la documentación larga */
+  overflow-y: auto;
 }
 
 .machine-spirit-warning {
@@ -167,7 +174,7 @@ body {
   }
 }
 
-/* Custom Scrollbar para mantener el estilo */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -182,113 +189,68 @@ body {
 }
 
 /* --- Animaciones Keyframes --- */
-@keyframes spin {
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes spin-reverse {
-  100% {
-    transform: rotate(-360deg);
-  }
-}
-
-@keyframes scan {
-  0% {
-    top: -10%;
-  }
-
-  100% {
-    top: 110%;
-  }
-}
-
-@keyframes blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0;
-  }
-}
-
+@keyframes spin { 100% { transform: rotate(360deg); } }
+@keyframes spin-reverse { 100% { transform: rotate(-360deg); } }
+@keyframes scan { 0% { top: -10%; } 100% { top: 110%; } }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 @keyframes text-flicker {
-  0% {
-    opacity: 0.97;
-  }
-
-  50% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0.98;
-  }
+  0% { opacity: 0.97; }
+  50% { opacity: 1; }
+  100% { opacity: 0.98; }
 }
 
-
-/* Engranajes.css */
+/* Engranajes.css - PROTOCOLO BLINDADO */
 
 .sacred-cogs-container {
-  /* Contenedor que ocupa el espacio del elemento padre */
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  z-index: 1; /* Mantén el z-index bajo para que quede en el fondo */
-  opacity: 0.15; /* Ajusta la opacidad según la fuerza visual que desees */
-  pointer-events: none; /* Crucial para que no bloquee los clics en los elementos frontales */
-  overflow: hidden; /* Evita que los engranajes rompan el layout si sobresalen */
+  position: fixed; /* Ignora todas las reglas flex del #root */
+  top: 0; left: 0; 
+  width: 100vw; /* Cubre toda tu pantalla */
+  height: 100vh; /* Cubre toda tu pantalla */
+  z-index: 0; /* Se queda al fondo del todo */
+  opacity: 0.25; /* Resplandor sutil */
+  pointer-events: none; 
+  overflow: hidden; 
 }
 
 .cog-svg {
+  display: block; /* Anula el text-align: center del index.css */
   position: absolute;
-  fill: none;
-  stroke: #ff8a00; /* Color naranja Mechanicus */
-  stroke-width: 2;
+  fill: transparent; /* Fuerza a que el centro sea hueco */
+  stroke: #ff8a00; 
+  stroke-width: 2px;
 }
 
-/* Engranaje Principal (Gira en sentido horario) */
+/* Usamos 'vh' (Viewport Height) para que siempre mantengan su escala */
 .cog-large {
-  width: 800px;
-  height: 800px;
-  top: -250px;
-  right: -250px;
+  width: 80vh; 
+  height: 80vh;
+  top: -15vh; 
+  right: -15vh; 
   animation: spin-clockwise 60s linear infinite;
 }
 
-/* Engranaje Secundario (Gira en sentido antihorario) */
 .cog-small {
-  width: 400px;
-  height: 400px;
-  bottom: -150px;
-  left: -150px;
+  width: 45vh; 
+  height: 45vh;
+  bottom: -5vh; 
+  left: -5vh; 
   animation: spin-counter-clockwise 40s linear infinite;
 }
 
-/* Las directivas de movimiento perpetuo */
-@keyframes spin-clockwise { 
-  100% { transform: rotate(360deg); } 
-}
-@keyframes spin-counter-clockwise { 
-  100% { transform: rotate(-360deg); } 
-}
+@keyframes spin-clockwise { 100% { transform: rotate(360deg); } }
+@keyframes spin-counter-clockwise { 100% { transform: rotate(-360deg); } }
 
-/* Agrega esto a tu App.css o MechanicusConsole.css */
+/* --- RENDERIZADO MARKDOWN --- */
 
 .markdown-document img {
   max-width: 100%;
   height: auto;
-  border: 1px solid #ff8a00; /* Borde naranja sagrado */
+  border: 1px solid #ff8a00;
   margin: 15px 0;
-  
-  /* Filtro opcional para que la imagen se vea como en un monitor monocromo antiguo */
   filter: sepia(1) hue-rotate(-50deg) saturate(3) opacity(0.8); 
   mix-blend-mode: screen;
 }
 
-/* Estilos extra para que los encabezados y listas del MD se vean bien */
 .markdown-document h1, 
 .markdown-document h2, 
 .markdown-document h3 {
