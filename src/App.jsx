@@ -1,122 +1,88 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+// MechanicusConsole.jsx
+import React, { useState } from 'react';
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+const MechanicusConsole = () => {
+  // Estado para simular la navegación entre los tomos de conocimiento
+  const [activeRitual, setActiveRitual] = useState('estructura');
+
+  const sacredDocs = [
+    { id: 'software-libre', label: '01Software_libre_y_licencias' },
+    { id: 'instalacion', label: '02Instalacion_y-configuracion_basica' },
+    { id: 'permisos', label: '03Permisos_por_linea_de_comandos' },
+    { id: 'gestores-paquetes', label: '04Gestores_de_paquetes' },
+    { id: 'ngnix', label: '05Ngnix_y_despliegue_del_sitio' },
+  ];
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
+    <div className="cogitator-container">
+      {/* Cabecera del Cogitador */}
+      <header className="cogitator-header">
+        [ADEPTUS MECHANICUS // COGITATOR UNIT.78 // DATA-VAULT 40K]
+      </header>
+
+      <div className="cogitator-body">
+        {/* Barra Lateral / Índice */}
+        <nav className="sacred-index">
+          <div className="section-title">ÍNDICE_SAGRADO [INDEX]</div>
+          <ul>
+            {sacredDocs.map((doc) => (
+              <li key={doc.id} onClick={() => setActiveRitual(doc.id)}>
+                {doc.label}
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        {/* Contenido Principal */}
+        <main className="data-vault">
+          <div className="section-title">
+            [WIKI // INTRODUCCIÓN AL SERVIDOR LINUX // OPERACIÓN DEL ESPÍRITU DE LA MÁQUINA]
+          </div>
+          
+          <p>[PROTOCOLO 34.7: KNOWLEDGE-VAULT 113 // INITIATED BY TECH-PRIEST]</p>
+          <br/>
           <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+            Bienvenido, Iniciado. El Servidor Linux es la base del Conocimiento Sagrado. 
+            Este Cogitador archiva la sabiduría necesaria para la correcta administración y 
+            rituales del sistema.
           </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+          <br/>
 
-      <div className="ticks"></div>
+          {/* Renderizado condicional basado en la navegación */}
+          {activeRitual === 'estructura' && (
+            <section>
+              <p>------------- [ESTRUCTURA DEL SISTEMA] -------------</p>
+              <p>
+                <strong>1. El Kernel [Núcleo]:</strong> El núcleo gestiona el hardware, 
+                asigna recursos y obedece al Omnissiah.
+              </p>
+              <br/>
+              <p>
+                <strong>2. El Sistema de Archivos:</strong> La jerarquía sagrada (/root, 
+                /etc, /var) que organiza la data inmaculada.
+              </p>
+            </section>
+          )}
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+          {activeRitual === 'comandos' && (
+            <section>
+               <p>------------- [CÁNTICOS DE TERMINAL] -------------</p>
+               <p>
+                 &gt; COMANDOS CLAVE: <code>top</code>, <code>htop</code>, <code>dmesg</code>, <code>systemctl</code>, <code>ls</code>, <code>cd</code>, <code>cat</code>
+               </p>
+            </section>
+          )}
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
-}
+          <div className="machine-spirit-warning">
+            ------------- [EL ESPÍRITU DE LA MÁQUINA] -------------
+            <br/>
+            Siga los protocolos de mantenimiento. El error es fracaso. La lógica es pura.
+          </div>
+        </main>
+      </div>
+    </div>
+  );
+};
 
-export default App
+export default MechanicusConsole;
