@@ -7,95 +7,35 @@
   --mech-alert: #ff3300;
 }
 
+body {
+  margin: 0;
+  background: var(--mech-dark);
+}
+
+#root {
+  min-height: 100vh;
+}
+
 /* El contenedor maestro que abarca toda la pantalla */
+.cogitator-container,
 .cogitator-viewport {
   position: relative;
   background-color: var(--mech-dark);
   color: var(--mech-orange);
   font-family: 'Courier New', Courier, monospace;
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  width: 100%;
   overflow: hidden;
+}
+
+.cogitator-container {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Animaciones del Fondo Sagrado (Engranajes) */
-.sacred-cogs-bg {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  z-index: 1;
-  opacity: 0.08; /* Muy sutil para no distraer del texto */
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.cog-svg {
-  position: absolute;
-  fill: none;
-  stroke: var(--mech-orange);
-  stroke-width: 2;
-}
-
-.cog-large {
-  width: 800px;
-  height: 800px;
-  top: -250px;
-  right: -250px;
-  animation: spin 60s linear infinite;
-}
-
-.cog-small {
-  width: 400px;
-  height: 400px;
-  bottom: -150px;
-  left: -150px;
-  animation: spin-reverse 40s linear infinite;
-}
-
-/* Efectos de Monitor Antiguo (Superpuestos) */
-.crt-overlay {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  z-index: 10;
-  pointer-events: none; /* Crucial para que los clics pasen al texto */
-  background: 
-    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
-    linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
-  background-size: 100% 4px, 3px 100%;
-  box-shadow: inset 0 0 120px rgba(0,0,0,0.95);
-}
-
-/* La línea de escaneo que baja por la pantalla */
-.scanline {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 8px;
-  background: linear-gradient(to bottom, transparent, rgba(255, 138, 0, 0.4), transparent);
-  opacity: 0.6;
-  animation: scan 6s linear infinite;
-  z-index: 11;
-  pointer-events: none;
-}
-
 /* La Terminal Central */
-.terminal-chassis {
-  position: relative;
-  z-index: 5;
-  width: 90%;
-  max-width: 1400px;
-  height: 85vh;
-  border: 2px solid var(--mech-orange);
-  background-color: rgba(7, 3, 0, 0.85);
-  box-shadow: 0 0 30px var(--mech-glow), inset 0 0 20px var(--mech-glow);
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  animation: text-flicker 0.15s infinite;
-  text-shadow: 0 0 5px var(--mech-glow);
-}
-
+.cogitator-header,
 .terminal-header {
   border-bottom: 2px solid var(--mech-orange);
   padding-bottom: 15px;
@@ -107,16 +47,27 @@
   letter-spacing: 2px;
 }
 
-.terminal-header .status-blinker {
-  color: var(--mech-alert);
-  animation: blink 1s step-end infinite;
-}
-
+.cogitator-body,
 .terminal-body {
   display: flex;
   gap: 40px;
   flex: 1;
   overflow: hidden;
+}
+
+.cogitator-container,
+.terminal-chassis {
+  width: min(90%, 1400px);
+  height: 85vh;
+  border: 2px solid var(--mech-orange);
+  background-color: rgba(7, 3, 0, 0.85);
+  box-shadow: 0 0 30px var(--mech-glow), inset 0 0 20px var(--mech-glow);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  animation: text-flicker 0.15s infinite;
+  text-shadow: 0 0 5px var(--mech-glow);
+  box-sizing: border-box;
 }
 
 .sacred-index {
@@ -126,9 +77,15 @@
   overflow-y: auto; /* Permite scroll en el índice si hay muchas páginas */
 }
 
+.section-title {
+  margin-bottom: 12px;
+  font-weight: bold;
+}
+
 .sacred-index ul {
   list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
 .sacred-index li {
@@ -139,7 +96,8 @@
   transition: all 0.2s ease-in-out;
 }
 
-.sacred-index li:hover, .sacred-index li.active {
+.sacred-index li:hover,
+.sacred-index li.active {
   color: #fff;
   border-left: 2px solid var(--mech-orange);
   background-color: rgba(255, 138, 0, 0.1);
@@ -152,18 +110,70 @@
   overflow-y: auto; /* Scroll para la documentación larga */
 }
 
+.machine-spirit-warning {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 138, 0, 0.35);
+}
+
 /* Custom Scrollbar para mantener el estilo */
-::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: var(--mech-dark); border-left: 1px solid var(--mech-orange); }
-::-webkit-scrollbar-thumb { background: var(--mech-orange); }
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--mech-dark);
+  border-left: 1px solid var(--mech-orange);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--mech-orange);
+}
 
 /* --- Animaciones Keyframes --- */
-@keyframes spin { 100% { transform: rotate(360deg); } }
-@keyframes spin-reverse { 100% { transform: rotate(-360deg); } }
-@keyframes scan { 0% { top: -10%; } 100% { top: 110%; } }
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-reverse {
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes scan {
+  0% {
+    top: -10%;
+  }
+
+  100% {
+    top: 110%;
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
 @keyframes text-flicker {
-  0% { opacity: 0.97; }
-  50% { opacity: 1; }
-  100% { opacity: 0.98; }
+  0% {
+    opacity: 0.97;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.98;
+  }
 }
