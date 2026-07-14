@@ -6,7 +6,7 @@ import softwareLibreMd from './docs/01Software_libre_y_licencias.md?raw';
 import instalacionBasicaMd from './docs/02Instalacion_y-configuracion_basica.md?raw';
 import permisosporlineadecomandos from './docs/03Permisos_por_linea_de_comandos.md?raw';
 import gestoresdepaquetes from './docs/04Gestores_de_paquetes.md?raw';
-import ngnixdespliegue from './docs/05Ngnix_y_despliegue_del_sitio.md?raw';
+import ngnixdesplieguedelsitio from './docs/05Ngnix_y_despliegue_del_sitio.md?raw';
 
 // Componente de los Engranajes de Fondo (Versión Blindada contra Desplazamiento)
 const EngranajesBackground = () => {
