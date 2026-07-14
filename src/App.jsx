@@ -1,33 +1,35 @@
 // MechanicusConsole.jsx
 import React, { useState } from 'react';
 import './App.css';
+import { mechanicusLore } from './mechanicusLore';
+import softwareLibreMd from './docs/01Software_libre_y_licencias.md?raw';
+import instalacionBasicaMd from './docs/02Instalacion_y-configuracion_basica.md?raw';
 
 const MechanicusConsole = () => {
   // Estado para simular la navegación entre los tomos de conocimiento
-  const [activeRitual, setActiveRitual] = useState('estructura');
+  const [activeRitual, setActiveRitual] = useState('software-libre');
 
-  const sacredDocs = [
-    { id: 'software-libre', label: '01Software_libre_y_licencias' },
-    { id: 'instalacion', label: '02Instalacion_y-configuracion_basica' },
-    { id: 'permisos', label: '03Permisos_por_linea_de_comandos' },
-    { id: 'gestores-paquetes', label: '04Gestores_de_paquetes' },
-    { id: 'ngnix', label: '05Ngnix_y_despliegue_del_sitio' },
-  ];
+  const activeDoc = mechanicusLore.docRituals[activeRitual];
 
   return (
     <div className="cogitator-container">
       {/* Cabecera del Cogitador */}
       <header className="cogitator-header">
-        [ADEPTUS MECHANICUS // COGITATOR UNIT.78 // DATA-VAULT 40K]
+        {mechanicusLore.header}
       </header>
 
       <div className="cogitator-body">
         {/* Barra Lateral / Índice */}
         <nav className="sacred-index">
-          <div className="section-title">ÍNDICE_SAGRADO [INDEX]</div>
+          <div className="section-title">[ÍNDICE_SAGRADO // ARCHIVUM_OMNISSIAH]</div>
           <ul>
-            {sacredDocs.map((doc) => (
-              <li key={doc.id} onClick={() => setActiveRitual(doc.id)}>
+            {mechanicusLore.sacredDocs.map((doc) => (
+              <li
+                key={doc.id}
+                className={activeRitual === doc.id ? 'active' : ''}
+                onClick={() => setActiveRitual(doc.id)}
+              >
+                <span className="sacred-index-sigil">{doc.sigil}</span>
                 {doc.label}
               </li>
             ))}
@@ -37,47 +39,41 @@ const MechanicusConsole = () => {
         {/* Contenido Principal */}
         <main className="data-vault">
           <div className="section-title">
-            [WIKI // INTRODUCCIÓN AL SERVIDOR LINUX // OPERACIÓN DEL ESPÍRITU DE LA MÁQUINA]
+            {mechanicusLore.introTitle}
           </div>
           
-          <p>[PROTOCOLO 34.7: KNOWLEDGE-VAULT 113 // INITIATED BY TECH-PRIEST]</p>
+          <p>{mechanicusLore.introProtocol}</p>
           <br/>
           <p>
-            Bienvenido, Iniciado. El Servidor Linux es la base del Conocimiento Sagrado. 
-            Este Cogitador archiva la sabiduría necesaria para la correcta administración y 
-            rituales del sistema.
+            {mechanicusLore.introText}
           </p>
+          <br/>
+          <p>{mechanicusLore.machineLitany}</p>
           <br/>
 
           {/* Renderizado condicional basado en la navegación */}
-          {activeRitual === 'estructura' && (
+          {activeRitual === 'software-libre' ? (
             <section>
-              <p>------------- [ESTRUCTURA DEL SISTEMA] -------------</p>
-              <p>
-                <strong>1. El Kernel [Núcleo]:</strong> El núcleo gestiona el hardware, 
-                asigna recursos y obedece al Omnissiah.
-              </p>
-              <br/>
-              <p>
-                <strong>2. El Sistema de Archivos:</strong> La jerarquía sagrada (/root, 
-                /etc, /var) que organiza la data inmaculada.
-              </p>
+              <p>------------- [ARCHIVO_PRIMARIO // TEXTO_EN_BRUTO] -------------</p>
+              <pre className="markdown-document">{softwareLibreMd}</pre>
             </section>
-          )}
-
-          {activeRitual === 'comandos' && (
+          ) : activeRitual === 'instalacion' ? (
             <section>
-               <p>------------- [CÁNTICOS DE TERMINAL] -------------</p>
-               <p>
-                 &gt; COMANDOS CLAVE: <code>top</code>, <code>htop</code>, <code>dmesg</code>, <code>systemctl</code>, <code>ls</code>, <code>cd</code>, <code>cat</code>
-               </p>
+              <p>------------- [ARCHIVO_SECUNDARIO // TEXTO_EN_BRUTO] -------------</p>
+              <pre className="markdown-document">{instalacionBasicaMd}</pre>
             </section>
-          )}
+          ) : activeDoc ? (
+            <section>
+              <p>------------- [{activeDoc.title}] -------------</p>
+              {activeDoc.body.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </section>
+          ) : null}
 
           <div className="machine-spirit-warning">
-            ------------- [EL ESPÍRITU DE LA MÁQUINA] -------------
+            {mechanicusLore.warning}
             <br/>
-            Siga los protocolos de mantenimiento. El error es fracaso. La lógica es pura.
           </div>
         </main>
       </div>
