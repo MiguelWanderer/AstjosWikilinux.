@@ -5,39 +5,95 @@ import { mechanicusLore } from './mechanicusLore';
 import softwareLibreMd from './docs/01Software_libre_y_licencias.md?raw';
 import instalacionBasicaMd from './docs/02Instalacion_y-configuracion_basica.md?raw';
 import permisosporlineadecomandos from './docs/03Permisos_por_linea_de_comandos.md?raw';
+import gestoresdepaquetes from './docs/04Gestores_de_paquetes.md?raw';
+import ngnixdespliegue from './docs/05Ngnix_y_despliegue_del_sitio.md?raw';
 
-// Componente de los Engranajes de Fondo
+// Componente de los Engranajes de Fondo (Versión Blindada contra Desplazamiento)
 const EngranajesBackground = () => {
   return (
-    <div className="sacred-cogs-container">
+    <div 
+      className="sacred-cogs-container"
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
+        zIndex: -1, /* Asegura que vaya al fondo del todo, DETRÁS del contenido */
+        pointerEvents: 'none',
+        overflow: 'hidden',
+        margin: 0,
+        padding: 0,
+        display: 'block'
+      }}
+    >
       {/* Engranaje Grande */}
       <svg 
         className="cog-svg cog-large" 
-        viewBox="0 0 100 100" 
+        viewBox="-100 -100 200 200" 
         xmlns="http://www.w3.org/2000/svg"
         stroke="#ff8a00" 
-        strokeWidth="2" 
+        strokeWidth="1.5" 
         fill="none"
+        style={{ position: 'absolute' }}
       >
-        <circle cx="50" cy="50" r="40" strokeDasharray="10 5" />
-        <circle cx="50" cy="50" r="30" />
-        <circle cx="50" cy="50" r="10" />
-        <line x1="50" y1="10" x2="50" y2="90" />
-        <line x1="10" y1="50" x2="90" y2="50" />
+        {/* Generador de 16 Dientes Trapezoidales */}
+        {[...Array(16)].map((_, i) => (
+          <g key={`tooth-large-${i}`} transform={`rotate(${i * 22.5})`}>
+            <path d="M -10,-95 L 10,-95 L 14,-80 L -14,-80 Z" strokeWidth="2" />
+            <line x1="0" y1="-80" x2="0" y2="-55" />
+          </g>
+        ))}
+        
+        {/* Anillos Estructurales */}
+        <circle cx="0" cy="0" r="80" strokeWidth="2" />
+        <circle cx="0" cy="0" r="72" strokeDasharray="6 6" />
+        <circle cx="0" cy="0" r="55" strokeWidth="1.5" />
+        <circle cx="0" cy="0" r="25" strokeWidth="3" />
+        
+        {/* Remaches y Núcleo Sagrado */}
+        <circle cx="0" cy="0" r="6" fill="#ff8a00" />
+        {[...Array(8)].map((_, i) => (
+          <circle 
+            key={`rivet-${i}`} 
+            cx={Math.cos(i * 45 * Math.PI / 180) * 40} 
+            cy={Math.sin(i * 45 * Math.PI / 180) * 40} 
+            r="3" 
+            fill="#ff8a00" 
+            stroke="none"
+          />
+        ))}
       </svg>
       
       {/* Engranaje Pequeño */}
       <svg 
         className="cog-svg cog-small" 
-        viewBox="0 0 100 100" 
+        viewBox="-100 -100 200 200" 
         xmlns="http://www.w3.org/2000/svg"
         stroke="#ff8a00" 
         strokeWidth="2" 
         fill="none"
+        style={{ position: 'absolute' }}
       >
-        <circle cx="50" cy="50" r="45" strokeDasharray="8 4" />
-        <circle cx="50" cy="50" r="20" />
-        <path d="M 50 5 L 50 25 M 50 95 L 50 75 M 5 50 L 25 50 M 95 50 L 75 50" />
+        {/* Generador de 8 Dientes Dentados de Sierra */}
+        {[...Array(8)].map((_, i) => (
+          <g key={`tooth-small-${i}`} transform={`rotate(${i * 45})`}>
+            <path d="M -16,-90 L 16,-90 L 22,-65 L -22,-65 Z" />
+            {/* Radios en forma de Chevron (V) */}
+            <path d="M 0,-65 L 18,-30 L -18,-30 Z" strokeWidth="1" />
+          </g>
+        ))}
+
+        {/* Anillos Interiores de Alta Densidad */}
+        <circle cx="0" cy="0" r="65" strokeWidth="3" strokeDasharray="15 5" />
+        <circle cx="0" cy="0" r="50" />
+        <circle cx="0" cy="0" r="30" strokeWidth="1" />
+        <circle cx="0" cy="0" r="14" strokeWidth="3" />
+        
+        {/* Runa Central de Bloqueo */}
+        <rect x="-6" y="-6" width="12" height="12" fill="#ff8a00" />
+        <line x1="-14" y1="-14" x2="14" y2="14" />
+        <line x1="14" y1="-14" x2="-14" y2="14" />
       </svg>
     </div>
   );
@@ -52,6 +108,7 @@ const MechanicusConsole = () => {
 
   return (
     <>
+      {/* Los engranajes ahora están blindados en línea y con posición absoluta/fija garantizada */}
       <EngranajesBackground />
       
       <div className="cogitator-container">
@@ -113,6 +170,20 @@ const MechanicusConsole = () => {
                 <p>------------- [ARCHIVO_TERCERARIO // DECODIFICANDO_ENGRAMAS] -------------</p>
                 <div className="markdown-document">
                   <ReactMarkdown>{permisosporlineadecomandos}</ReactMarkdown>
+                </div>
+              </section>
+            ) : activeRitual === 'gestores-paquetes' ? (
+              <section>
+                <p>------------- [ARCHIVO_CUARTO // DECODIFICANDO_ENGRAMAS] -------------</p>
+                <div className="markdown-document">
+                  <ReactMarkdown>{gestoresdepaquetes}</ReactMarkdown>
+                </div>
+              </section>
+            ) : activeRitual === 'ngnix-despliegue' ? (
+              <section>
+                <p>------------- [ARCHIVO_QUINTO // DECODIFICANDO_ENGRAMAS] -------------</p>
+                <div className="markdown-document">
+                  <ReactMarkdown>{ngnixdespliegue}</ReactMarkdown>
                 </div>
               </section>
             ) : activeDoc ? (

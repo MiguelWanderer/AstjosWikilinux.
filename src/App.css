@@ -202,7 +202,7 @@ body {
 /* Engranajes.css - PROTOCOLO BLINDADO */
 
 .sacred-cogs-container {
-  position: fixed; /* Ignora todas las reglas flex del #root */
+  position: flex; /* Ignora todas las reglas flex del #root */
   top: 0; left: 0; 
   width: 100vw; /* Cubre toda tu pantalla */
   height: 100vh; /* Cubre toda tu pantalla */
