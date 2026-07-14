@@ -4,6 +4,7 @@ import './App.css';
 import { mechanicusLore } from './mechanicusLore';
 import softwareLibreMd from './docs/01Software_libre_y_licencias.md?raw';
 import instalacionBasicaMd from './docs/02Instalacion_y-configuracion_basica.md?raw';
+import permisosporlineadecomandos from './docs/03Permisos_por_linea_de_comandos.md?raw';
 
 const MechanicusConsole = () => {
   // Estado para simular la navegación entre los tomos de conocimiento
@@ -61,6 +62,11 @@ const MechanicusConsole = () => {
             <section>
               <p>------------- [ARCHIVO_SECUNDARIO // TEXTO_EN_BRUTO] -------------</p>
               <pre className="markdown-document">{instalacionBasicaMd}</pre>
+            </section>
+          ) : activeRitual === 'permisos' ? (
+            <section>
+              <p>------------- [ARCHIVO_TERCERARIO // TEXTO_EN_BRUTO] -------------</p>
+              <pre className="markdown-document">{permisosporlineadecomandos}</pre>
             </section>
           ) : activeDoc ? (
             <section>
