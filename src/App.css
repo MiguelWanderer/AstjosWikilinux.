@@ -274,3 +274,37 @@ body {
 @keyframes spin-counter-clockwise { 
   100% { transform: rotate(-360deg); } 
 }
+
+/* Agrega esto a tu App.css o MechanicusConsole.css */
+
+.markdown-document img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ff8a00; /* Borde naranja sagrado */
+  margin: 15px 0;
+  
+  /* Filtro opcional para que la imagen se vea como en un monitor monocromo antiguo */
+  filter: sepia(1) hue-rotate(-50deg) saturate(3) opacity(0.8); 
+  mix-blend-mode: screen;
+}
+
+/* Estilos extra para que los encabezados y listas del MD se vean bien */
+.markdown-document h1, 
+.markdown-document h2, 
+.markdown-document h3 {
+  border-bottom: 1px dashed #ff8a00;
+  padding-bottom: 5px;
+  margin-top: 20px;
+}
+
+.markdown-document ul, 
+.markdown-document ol {
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
+
+.markdown-document code {
+  background-color: rgba(255, 138, 0, 0.1);
+  padding: 2px 5px;
+  border: 1px solid rgba(255, 138, 0, 0.3);
+}

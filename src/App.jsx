@@ -1,14 +1,14 @@
-// MechanicusConsole.jsx
+// MechanicusConsole.jsx (o App.jsx dependiendo de tu enrutador)
 import React, { useState } from 'react';
+import ReactMarkdown from 'react-markdown';
 import './App.css';
+import './Engranajes.css';
 import { mechanicusLore } from './mechanicusLore';
 import softwareLibreMd from './docs/01Software_libre_y_licencias.md?raw';
 import instalacionBasicaMd from './docs/02Instalacion_y-configuracion_basica.md?raw';
 import permisosporlineadecomandos from './docs/03Permisos_por_linea_de_comandos.md?raw';
-// EngranajesBackground.jsx
-import React from 'react';
-import './Engranajes.css';
 
+// Componente de los Engranajes de Fondo
 const EngranajesBackground = () => {
   return (
     <div className="sacred-cogs-container">
@@ -36,9 +36,7 @@ const EngranajesBackground = () => {
   );
 };
 
-export default EngranajesBackground;
-
-
+// Componente Principal de la Consola
 const MechanicusConsole = () => {
   // Estado para simular la navegación entre los tomos de conocimiento
   const [activeRitual, setActiveRitual] = useState('software-libre');
@@ -88,18 +86,24 @@ const MechanicusConsole = () => {
           {/* Renderizado condicional basado en la navegación */}
           {activeRitual === 'software-libre' ? (
             <section>
-              <p>------------- [ARCHIVO_PRIMARIO // TEXTO_EN_BRUTO] -------------</p>
-              <pre className="markdown-document">{softwareLibreMd}</pre>
+              <p>------------- [ARCHIVO_PRIMARIO // DECODIFICANDO_ENGRAMAS] -------------</p>
+              <div className="markdown-document">
+                <ReactMarkdown>{softwareLibreMd}</ReactMarkdown>
+              </div>
             </section>
           ) : activeRitual === 'instalacion' ? (
             <section>
-              <p>------------- [ARCHIVO_SECUNDARIO // TEXTO_EN_BRUTO] -------------</p>
-              <pre className="markdown-document">{instalacionBasicaMd}</pre>
+              <p>------------- [ARCHIVO_SECUNDARIO // DECODIFICANDO_ENGRAMAS] -------------</p>
+              <div className="markdown-document">
+                <ReactMarkdown>{instalacionBasicaMd}</ReactMarkdown>
+              </div>
             </section>
           ) : activeRitual === 'permisos' ? (
             <section>
-              <p>------------- [ARCHIVO_TERCERARIO // TEXTO_EN_BRUTO] -------------</p>
-              <pre className="markdown-document">{permisosporlineadecomandos}</pre>
+              <p>------------- [ARCHIVO_TERCERARIO // DECODIFICANDO_ENGRAMAS] -------------</p>
+              <div className="markdown-document">
+                <ReactMarkdown>{permisosporlineadecomandos}</ReactMarkdown>
+              </div>
             </section>
           ) : activeDoc ? (
             <section>
