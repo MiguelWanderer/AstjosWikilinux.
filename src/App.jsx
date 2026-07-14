@@ -183,7 +183,7 @@ const MechanicusConsole = () => {
               <section>
                 <p>------------- [ARCHIVO_QUINTO // DECODIFICANDO_ENGRAMAS] -------------</p>
                 <div className="markdown-document">
-                  <ReactMarkdown>{ngnixdespliegue}</ReactMarkdown>
+                  <ReactMarkdown>{ngnixdesplieguedelsitio}</ReactMarkdown>
                 </div>
               </section>
             ) : activeDoc ? (
