@@ -1,45 +1,129 @@
-/* MechanicusConsole.css */
+/* MechanicusHeavy.css */
 
-.cogitator-container {
-  background-color: #0a0500;
-  color: #ff8a00;
-  font-family: 'Courier New', Courier, monospace;
-  min-height: 100vh;
-  padding: 20px;
-  box-sizing: border-box;
-  /* El aura sagrada del monitor */
-  text-shadow: 0 0 5px rgba(255, 138, 0, 0.8);
-  /* Efecto CRT Scanlines */
-  background-image: repeating-linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.15),
-    rgba(0, 0, 0, 0.15) 1px,
-    transparent 1px,
-    transparent 2px
-  );
-  display: flex;
-  flex-direction: column;
+:root {
+  --mech-orange: #ff8a00;
+  --mech-dark: #070300;
+  --mech-glow: rgba(255, 138, 0, 0.6);
+  --mech-alert: #ff3300;
 }
 
-.cogitator-header {
-  border-bottom: 2px solid #ff8a00;
-  padding-bottom: 10px;
+/* El contenedor maestro que abarca toda la pantalla */
+.cogitator-viewport {
+  position: relative;
+  background-color: var(--mech-dark);
+  color: var(--mech-orange);
+  font-family: 'Courier New', Courier, monospace;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Animaciones del Fondo Sagrado (Engranajes) */
+.sacred-cogs-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 1;
+  opacity: 0.08; /* Muy sutil para no distraer del texto */
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.cog-svg {
+  position: absolute;
+  fill: none;
+  stroke: var(--mech-orange);
+  stroke-width: 2;
+}
+
+.cog-large {
+  width: 800px;
+  height: 800px;
+  top: -250px;
+  right: -250px;
+  animation: spin 60s linear infinite;
+}
+
+.cog-small {
+  width: 400px;
+  height: 400px;
+  bottom: -150px;
+  left: -150px;
+  animation: spin-reverse 40s linear infinite;
+}
+
+/* Efectos de Monitor Antiguo (Superpuestos) */
+.crt-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 10;
+  pointer-events: none; /* Crucial para que los clics pasen al texto */
+  background: 
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+    linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  background-size: 100% 4px, 3px 100%;
+  box-shadow: inset 0 0 120px rgba(0,0,0,0.95);
+}
+
+/* La línea de escaneo que baja por la pantalla */
+.scanline {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 8px;
+  background: linear-gradient(to bottom, transparent, rgba(255, 138, 0, 0.4), transparent);
+  opacity: 0.6;
+  animation: scan 6s linear infinite;
+  z-index: 11;
+  pointer-events: none;
+}
+
+/* La Terminal Central */
+.terminal-chassis {
+  position: relative;
+  z-index: 5;
+  width: 90%;
+  max-width: 1400px;
+  height: 85vh;
+  border: 2px solid var(--mech-orange);
+  background-color: rgba(7, 3, 0, 0.85);
+  box-shadow: 0 0 30px var(--mech-glow), inset 0 0 20px var(--mech-glow);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  animation: text-flicker 0.15s infinite;
+  text-shadow: 0 0 5px var(--mech-glow);
+}
+
+.terminal-header {
+  border-bottom: 2px solid var(--mech-orange);
+  padding-bottom: 15px;
   margin-bottom: 20px;
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
   font-weight: bold;
   letter-spacing: 2px;
 }
 
-.cogitator-body {
+.terminal-header .status-blinker {
+  color: var(--mech-alert);
+  animation: blink 1s step-end infinite;
+}
+
+.terminal-body {
   display: flex;
-  gap: 30px;
+  gap: 40px;
   flex: 1;
+  overflow: hidden;
 }
 
 .sacred-index {
-  width: 250px;
-  border-right: 1px dashed #ff8a00;
+  width: 300px;
+  border-right: 2px dashed rgba(255, 138, 0, 0.5);
   padding-right: 20px;
+  overflow-y: auto; /* Permite scroll en el índice si hay muchas páginas */
 }
 
 .sacred-index ul {
@@ -50,33 +134,36 @@
 .sacred-index li {
   margin-bottom: 15px;
   cursor: pointer;
+  padding: 5px;
+  border-left: 2px solid transparent;
   transition: all 0.2s ease-in-out;
 }
 
-.sacred-index li:hover {
+.sacred-index li:hover, .sacred-index li.active {
   color: #fff;
-  text-shadow: 0 0 10px #ff8a00, 0 0 20px #ff8a00;
-}
-
-.sacred-index li::before {
-  content: "> ";
+  border-left: 2px solid var(--mech-orange);
+  background-color: rgba(255, 138, 0, 0.1);
+  text-shadow: 0 0 10px var(--mech-orange);
 }
 
 .data-vault {
   flex: 1;
   padding: 10px 20px;
+  overflow-y: auto; /* Scroll para la documentación larga */
 }
 
-.section-title {
-  border-bottom: 1px solid #ff8a00;
-  display: inline-block;
-  margin-bottom: 20px;
-  padding-bottom: 5px;
-}
+/* Custom Scrollbar para mantener el estilo */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--mech-dark); border-left: 1px solid var(--mech-orange); }
+::-webkit-scrollbar-thumb { background: var(--mech-orange); }
 
-.machine-spirit-warning {
-  margin-top: 30px;
-  border-top: 1px dashed #ff8a00;
-  padding-top: 15px;
-  font-style: italic;
+/* --- Animaciones Keyframes --- */
+@keyframes spin { 100% { transform: rotate(360deg); } }
+@keyframes spin-reverse { 100% { transform: rotate(-360deg); } }
+@keyframes scan { 0% { top: -10%; } 100% { top: 110%; } }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+@keyframes text-flicker {
+  0% { opacity: 0.97; }
+  50% { opacity: 1; }
+  100% { opacity: 0.98; }
 }
