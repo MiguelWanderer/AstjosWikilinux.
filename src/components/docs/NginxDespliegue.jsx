@@ -1,5 +1,17 @@
-import imgNginxT from '../../public/img/ITEM E/Captura de pantalla 2026-07-13 170341.png';
-import imgLocalhost from '../../public/img/ITEM E/Captura de pantalla 2026-07-13 170345.png';
+const imgNginxT = 'img/ITEM E/Captura de pantalla 2026-07-13 170341.png';
+const imgLocalhost = 'img/ITEM E/Captura de pantalla 2026-07-13 170345.png';
+
+const evidenciasItemE = [
+  '/img/ITEM E/Captura de pantalla 2026-07-13 175709.png',
+  '/img/ITEM E/Captura de pantalla 2026-07-13 175913.png',
+  '/img/ITEM E/Captura de pantalla 2026-07-13 180254.png',
+  '/img/ITEM E/Captura de pantalla 2026-07-13 180443.png',
+  '/img/ITEM E/Captura de pantalla 2026-07-13 180605.png',
+  '/img/ITEM E/Captura de pantalla 2026-07-13 181542.png',
+  '/img/ITEM E/Captura de pantalla 2026-07-13 181627.png',
+  '/img/ITEM E/Captura de pantalla 2026-07-13 182344.png',
+  '/img/ITEM E/Captura de pantalla 2026-07-13 182519.png',
+];
 
 const NginxDespliegue = () => {
   return (
@@ -122,6 +134,12 @@ const NginxDespliegue = () => {
           texto con tu captura de Certbot instalando el certificado).
         </em>
       </p>
+
+      <h2>Evidencias adicionales</h2>
+      <p>Resto de capturas del proceso, en el orden en que fueron creadas.</p>
+      {evidenciasItemE.map((src, index) => (
+        <img key={src} src={src} alt={`Evidencia despliegue Nginx ${index + 1}`} />
+      ))}
     </div>
   );
 };
