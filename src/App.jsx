@@ -7,8 +7,8 @@ import {
   PermisosComandos,
   GestoresPaquetes,
   NginxDespliegue,
-} from './components/docs';
-
+} from './assets/components/docs';
+  
 // Componente de los Engranajes de Fondo (Versión Blindada contra Desplazamiento)
 const EngranajesBackground = () => {
   return (
