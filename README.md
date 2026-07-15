@@ -10,7 +10,7 @@ Este proyecto utiliza React para simular una terminal CRT de la Forja de Marte, 
 
 ## 🌐 Enlaces de la Noosfera
 
-* 🔴 **Manifestación en Línea (Live Demo):** [AstjosWikiLinux - Vercel](https://astjos-wikilinux-pxahi7t6h-miguelwanderers-projects.vercel.app/)
+* 🔴 **Manifestación en Línea (Live Demo):** [AstjosWikiLinux - Vercel](https://astjos-wikilinux.vercel.app/)
 * 🗄️ **Bóveda de Código (Repositorio):** [GitHub - MiguelWanderer/AstjosWikilinux](https://github.com/MiguelWanderer/AstjosWikilinux)
 
 ---
