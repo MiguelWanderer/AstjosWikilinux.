@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
-import ReactMarkdown from 'react-markdown';
+import { useState } from 'react';
 import './App.css';
 import { mechanicusLore } from './mechanicusLore';
-import softwareLibreMd from './docs/01Software_libre_y_licencias.md?raw';
-import instalacionBasicaMd from './docs/02Instalacion_y-configuracion_basica.md?raw';
-import permisosporlineadecomandos from './docs/03Permisos_por_linea_de_comandos.md?raw';
-import gestoresdepaquetes from './docs/04Gestores_de_paquetes.md?raw';
-import ngnixdesplieguedelsitio from './docs/05Ngnix_y_despliegue_del_sitio.md?raw';
+import {
+  SoftwareLibreLicencias,
+  InstalacionBasica,
+  PermisosComandos,
+  GestoresPaquetes,
+  NginxDespliegue,
+} from './components/docs';
 
 // Componente de los Engranajes de Fondo (Versión Blindada contra Desplazamiento)
 const EngranajesBackground = () => {
@@ -154,37 +155,27 @@ const MechanicusConsole = () => {
             {activeRitual === 'software-libre' ? (
               <section>
                 <p>------------- [ARCHIVO_PRIMARIO // DECODIFICANDO_ENGRAMAS] -------------</p>
-                <div className="markdown-document">
-                  <ReactMarkdown>{softwareLibreMd}</ReactMarkdown>
-                </div>
+                <SoftwareLibreLicencias />
               </section>
             ) : activeRitual === 'instalacion' ? (
               <section>
                 <p>------------- [ARCHIVO_SECUNDARIO // DECODIFICANDO_ENGRAMAS] -------------</p>
-                <div className="markdown-document">
-                  <ReactMarkdown>{instalacionBasicaMd}</ReactMarkdown>
-                </div>
+                <InstalacionBasica />
               </section>
             ) : activeRitual === 'permisos' ? (
               <section>
                 <p>------------- [ARCHIVO_TERCERARIO // DECODIFICANDO_ENGRAMAS] -------------</p>
-                <div className="markdown-document">
-                  <ReactMarkdown>{permisosporlineadecomandos}</ReactMarkdown>
-                </div>
+                <PermisosComandos />
               </section>
             ) : activeRitual === 'gestores-paquetes' ? (
               <section>
                 <p>------------- [ARCHIVO_CUARTO // DECODIFICANDO_ENGRAMAS] -------------</p>
-                <div className="markdown-document">
-                  <ReactMarkdown>{gestoresdepaquetes}</ReactMarkdown>
-                </div>
+                <GestoresPaquetes />
               </section>
             ) : activeRitual === 'ngnix-despliegue' ? (
               <section>
                 <p>------------- [ARCHIVO_QUINTO // DECODIFICANDO_ENGRAMAS] -------------</p>
-                <div className="markdown-document">
-                  <ReactMarkdown>{ngnixdesplieguedelsitio}</ReactMarkdown>
-                </div>
+                <NginxDespliegue />
               </section>
             ) : activeDoc ? (
               <section>
