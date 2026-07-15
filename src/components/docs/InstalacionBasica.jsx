@@ -1,6 +1,12 @@
+import imgNginxT from '../../assets/img/ITEM A/Captura de pantalla 2026-07-13 143002.png';
+import imgLocalhost from '../../assets/img/ITEM A/Captura de pantalla 2026-07-13 143318.png';
+
+
 const InstalacionBasica = () => {
   return (
     <div className="markdown-document">
+
+
       <h2>¿Que es la Nat?</h2>
       <p>
         La <strong>NAT</strong> o directorio de red es aquello que entendemos dentro de la misma

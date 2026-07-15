@@ -155,27 +155,27 @@ const MechanicusConsole = () => {
             {activeRitual === 'software-libre' ? (
               <section>
                 <p>------------- [ARCHIVO_PRIMARIO // DECODIFICANDO_ENGRAMAS] -------------</p>
-                <SoftwareLibreLicencias />
+                <SoftwareLibreLicencias/>
               </section>
             ) : activeRitual === 'instalacion' ? (
               <section>
                 <p>------------- [ARCHIVO_SECUNDARIO // DECODIFICANDO_ENGRAMAS] -------------</p>
-                <InstalacionBasica />
+                <InstalacionBasica/>
               </section>
             ) : activeRitual === 'permisos' ? (
               <section>
                 <p>------------- [ARCHIVO_TERCERARIO // DECODIFICANDO_ENGRAMAS] -------------</p>
-                <PermisosComandos />
+                <PermisosComandos/>
               </section>
             ) : activeRitual === 'gestores-paquetes' ? (
               <section>
                 <p>------------- [ARCHIVO_CUARTO // DECODIFICANDO_ENGRAMAS] -------------</p>
-                <GestoresPaquetes />
+                <GestoresPaquetes/>
               </section>
             ) : activeRitual === 'ngnix-despliegue' ? (
               <section>
                 <p>------------- [ARCHIVO_QUINTO // DECODIFICANDO_ENGRAMAS] -------------</p>
-                <NginxDespliegue />
+                <NginxDespliegue/>
               </section>
             ) : activeDoc ? (
               <section>

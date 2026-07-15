@@ -1,5 +1,5 @@
-import imgNginxT from '../../assets/img/ITEM E/Captura de pantalla 2026-07-13 170341.png';
-import imgLocalhost from '../../assets/img/ITEM E/Captura de pantalla 2026-07-13 170345.png';
+import imgNginxT from '../../public/img/ITEM E/Captura de pantalla 2026-07-13 170341.png';
+import imgLocalhost from '../../public/img/ITEM E/Captura de pantalla 2026-07-13 170345.png';
 
 const NginxDespliegue = () => {
   return (

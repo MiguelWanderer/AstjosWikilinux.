@@ -13,7 +13,7 @@ export const mechanicusLore = {
     { id: 'instalacion', label: '02// INSTALACION_Y_CONFIGURACION_BASICA', sigil: '⧖' },
     { id: 'permisos', label: '03// PERMISOS_POR_LINEA_DE_COMANDOS', sigil: '⛭' },
     { id: 'gestores-paquetes', label: '04// GESTORES_DE_PAQUETES', sigil: '⎔' },
-    { id: 'ngnix', label: '05// NGNIX_Y_DESPLIEGUE_DEL_SITIO', sigil: '⌁' },
+    { id: 'ngnix-despliegue', label: '05// NGNIX_Y_DESPLIEGUE_DEL_SITIO', sigil: '⌁' },
   ],
   docRituals: {
     'software-libre': {
@@ -44,7 +44,7 @@ export const mechanicusLore = {
         'APT y otros administradores alimentan el archivo sagrado con componentes verificados.',
       ],
     },
-    ngnix: {
+    'ngnix-despliegue': {
       title: '05 // NGNIX_Y_DESPLIEGUE_DEL_SITIO',
       body: [
         'El despliegue del sitio requiere un guardián que reciba las peticiones y las dirija.',

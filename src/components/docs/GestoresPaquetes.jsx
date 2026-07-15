@@ -1,5 +1,5 @@
-import imgAptShow from '../../assets/img/ITEM D/Captura de pantalla 2026-07-13 170006.png';
-import imgAptInstall from '../../assets/img/ITEM D/Captura de pantalla 2026-07-13 170253.png';
+import imgAptShow from '../../public/img/ITEM D/Captura de pantalla 2026-07-13 170006.png';
+import imgAptInstall from '../../public/img/ITEM D/Captura de pantalla 2026-07-13 170253.png';
 
 const GestoresPaquetes = () => {
   return (

@@ -1,8 +1,8 @@
-import imgLsL from '../../assets/img/ITEM C/Captura de pantalla 2026-07-13 165227.png';
-import imgChown from '../../assets/img/ITEM C/Captura de pantalla 2026-07-13 165321.png';
-import imgLsLd from '../../assets/img/ITEM C/Captura de pantalla 2026-07-13 165918.png';
-import imgComplementaria1 from '../../assets/img/ITEM C/Captura de pantalla 2026-07-13 165406.png';
-import imgComplementaria2 from '../../assets/img/ITEM C/Captura de pantalla 2026-07-13 165928.png';
+import imgLsL from '../../public/img/ITEM C/Captura de pantalla 2026-07-13 165227.png';
+import imgChown from '../../public/img/ITEM C/Captura de pantalla 2026-07-13 165321.png';
+import imgLsLd from '../../public/img/ITEM C/Captura de pantalla 2026-07-13 165918.png';
+import imgComplementaria1 from '../../public/img/ITEM C/Captura de pantalla 2026-07-13 165406.png';
+import imgComplementaria2 from '../../public/img/ITEM C/Captura de pantalla 2026-07-13 165928.png';
 
 const PermisosComandos = () => {
   return (
