@@ -1,12 +1,28 @@
-import imgNginxT from '../../assets/img/ITEM A/Captura de pantalla 2026-07-13 143002.png';
-import imgLocalhost from '../../assets/img/ITEM A/Captura de pantalla 2026-07-13 143318.png';
-
+const evidenciasItemB = [
+  '/img/ITEM B/Captura de pantalla 2026-07-13 130525.png',
+  '/img/ITEM B/Captura de pantalla 2026-07-13 130653.png',
+  '/img/ITEM B/Captura de pantalla 2026-07-13 130816.png',
+  '/img/ITEM B/Captura de pantalla 2026-07-13 130843.png',
+  '/img/ITEM B/Captura de pantalla 2026-07-13 130930.png',
+  '/img/ITEM B/Captura de pantalla 2026-07-13 130959.png',
+  '/img/ITEM B/Captura de pantalla 2026-07-13 131702.png',
+  '/img/ITEM B/Captura de pantalla 2026-07-13 131728.png',
+  '/img/ITEM B/Captura de pantalla 2026-07-13 131852.png',
+  '/img/ITEM B/Captura de pantalla 2026-07-13 132951.png',
+  '/img/ITEM B/Captura de pantalla 2026-07-13 133447.png',
+  '/img/ITEM B/Captura de pantalla 2026-07-13 143531.png',
+  '/img/ITEM B/Captura de pantalla 2026-07-13 164427.png',
+  '/img/ITEM B/Captura de pantalla 2026-07-13 164500.png',
+  '/img/ITEM B/Captura de pantalla 2026-07-13 164512.png',
+  '/img/ITEM B/Captura de pantalla 2026-07-13 164605.png',
+  '/img/ITEM B/Captura de pantalla 2026-07-13 164646.png',
+  '/img/ITEM B/Captura de pantalla 2026-07-13 164731.png',
+  '/img/ITEM B/Captura de pantalla 2026-07-13 164831.png',
+];
 
 const InstalacionBasica = () => {
   return (
     <div className="markdown-document">
-
-
       <h2>¿Que es la Nat?</h2>
       <p>
         La <strong>NAT</strong> o directorio de red es aquello que entendemos dentro de la misma
@@ -41,6 +57,12 @@ const InstalacionBasica = () => {
         usarlas para conseguir los resultados esperados que pida el cliente o la empresa donde
         trabaje.
       </p>
+
+      <h2>Evidencias de configuración</h2>
+      <p>Capturas del proceso, en el orden en que fueron creadas.</p>
+      {evidenciasItemB.map((src, index) => (
+        <img key={src} src={src} alt={`Evidencia configuración de red ${index + 1}`} />
+      ))}
     </div>
   );
 };
